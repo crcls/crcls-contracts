@@ -1,0 +1,36 @@
+{
+  "name": "crcls-contracts",
+  "version": "0.1.0",
+  "description": "Solidity contracts for CRCLS",
+  "main": "index.js",
+  "scripts": {
+    "build": "hardhat clean && hardhat compile --no-typechain --show-stack-traces",
+    "start": "hardhat deploy --network localhost",
+    "test": "hardhat test",
+    "test:static": "slither ./contracts --solc-remaps 'erc721a=node_modules/erc721a @openzeppelin=node_modules/@openzeppelin @chainlink=node_modules/@chainlink' --exclude naming-convention,external-function,low-level-calls --buidler-ignore-compile",
+    "toolbox": "docker run -it --rm -v $PWD:/src trailofbits/eth-security-toolbox",
+    "manticore": "manticore ./contracts/*.sol --solc-remaps 'erc721a=node_modules/erc721a @openzeppelin=node_modules/@openzeppelin @chainlink=node_modules/@chainlink' --exclude naming-convention,external-function,low-level-calls --buidler-ignore-compile --contract CRCLSCatalystPass",
+    "eth:node": "hardhat node --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crcls/crcls-contracts.git"
+  },
+  "author": "CRCLS",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/crcls/crcls-contracts/issues"
+  },
+  "homepage": "https://github.com/crcls/crcls-contracts#readme",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "dotenv": "^16.3.1",
+    "hardhat": "^2.17.1",
+    "hardhat-deploy": "^0.11.34",
+    "hardhat-deploy-ethers": "^0.4.1"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "4.9.3",
+    "ethers": "6.7.0"
+  }
+}
