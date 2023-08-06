@@ -22,7 +22,7 @@ contract Identity is ERC721, Ownable, IIdentity {
         fee = initialFee;
     }
 
-    function withdraw() external onlyOwner() {
+    function withdraw() external onlyOwner {
         uint balance = address(this).balance;
         payable(owner()).transfer(balance);
     }

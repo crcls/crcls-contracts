@@ -1,17 +1,6 @@
 [[language]]
 name = "typescript"
 auto-format = true
-file-types = ["ts", "tsx"]
+file-types = ["ts"]
 language-server = { command = "typescript-language-server", args = ["--stdio"] }
-formatter = { command = "npm run format", args = ["--parser", "typescript"] }
-
-[[language]]
-name = "jsx"
-auto-format = true
-file-types = ["tsx", "jsx"]
-language-server = { command = "typescript-language-server", args = ["--stdio"] }
-formatter = { command = "./node_modules/.bin/prettier", args = ["--parser", "typescript"] }
-
-[[language]]
-name = "scss"
-formatter = { command = "./node_modules/.bin/prettier", args = ["run", "prettier", "--parser", "scss"] }
+formatter = { command = "node_modules/.bin/prettier", args = ["--parser", "typescript"] }
