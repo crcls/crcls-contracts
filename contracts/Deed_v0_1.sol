@@ -34,15 +34,16 @@ contract Deed is ERC721, Ownable, IDeed {
     function purchase(string memory slug, address authority) external payable {
         require(msg.value >= fee, "Insufficient funds to create a Circle.");
 
+        _tokenIds.increment();
         uint256 tokenId = _tokenIds.current();
-        _safeMint(msg.sender, tokenId + 1);
+        _safeMint(msg.sender, tokenId);
 
         Circle storage circle = _circles[tokenId];
         circle.slug = slug;
         circle.authority = authority;
         circle.admins.push(Admin(msg.sender, 0));
+        _slugs[slug] = tokenId;
 
-        _tokenIds.increment();
         emit NewCircle(tokenId, slug, authority);
     }
 
