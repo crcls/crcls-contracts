@@ -4,3 +4,10 @@ auto-format = true
 file-types = ["ts"]
 language-server = { command = "typescript-language-server", args = ["--stdio"] }
 formatter = { command = "node_modules/.bin/prettier", args = ["--parser", "typescript"] }
+
+[[language]]
+name = "solidity"
+auto-format = true
+file-types = ["sol"]
+language-server = { command = "solc", args = ["--lsp"], timeout = 120 }
+formatter = { command = "node_modules/.bin/prettier", args = ["--parser", "solidity"] }
